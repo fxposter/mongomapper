@@ -33,6 +33,11 @@ module MongoMapper
         def write_attribute(name, value)
           self[name] = value
         end
+
+        def save(options={})
+          options = { :validate => false } if options == false
+          super(options)
+        end
       end
 
       module ClassMethods
